@@ -1,5 +1,5 @@
-source 'http://rubygems.org'
+source "http://rubygems.org"
 ruby "3.0.3"
-gem 'sinatra'
-gem 'metainspector'
-gem 'puma'
+gem "sinatra"
+gem "metainspector"
+gem "puma"
