@@ -6,7 +6,14 @@ require "json"
 
 # We can do: namespace "/api/v1" do
 # But that requires 'sinatra-contrib' gem.
-before { content_type :json }
+configure do
+  enable :cross_origin
+end
+
+before do
+  content_type :json
+  response.headers['Access-Control-Allow-Origin'] = '*'
+end
 
 get "/" do
   { error: 'Nothing here!'}.to_json
