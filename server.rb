@@ -12,33 +12,32 @@ end
 
 before do
   content_type :json
-  response.headers['Access-Control-Allow-Origin'] = '*'
+  response.headers['Access-Control-Allow-Origin'] = 'https://tenteromano.com'
 end
 
 get "/" do
   { error: 'Nothing here!'}.to_json
 end
 
-
 get "/metadata" do
   url = params[:url]
   if url.nil?
     return halt 400, {error: "No URL provided"}.to_json
-    # url = "https://dev.to/vetswhocode/vets-who-code-servicing-tech-opportunities-to-those-who-served-11lc"
   end
 
   url = "http://" + url if url[0..3] != "http"
 
   begin
     m = MetaInspector.new(url)
+    properties = m.meta_tags['property']
+
     {
-      title: m.title,
-      description: m.description,
-      best_description: m.best_description,
+      title: properties['og:title'],
+      description: properties['og:description'],
       image: m.images.best,
       url: m.url,
-      siteName: m.host,
-      hostname: ""
+      siteName: properties['og:site_name'],
+      hostname: m.host
     }.to_json
   rescue => e
     {
