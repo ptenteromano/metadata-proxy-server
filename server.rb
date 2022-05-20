@@ -12,7 +12,7 @@ end
 
 before do
   content_type :json
-  response.headers['Access-Control-Allow-Origin'] = 'https://tenteromano.com, https://www.tenteromano.com, https://portfolio-website-ptenteromano.vercel.app/'
+  response.headers['Access-Control-Allow-Origin'] = '*'
 end
 
 get "/" do
