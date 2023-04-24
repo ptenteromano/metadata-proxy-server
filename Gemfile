@@ -1,6 +1,4 @@
-source "http://rubygems.org"
-ruby "3.0.5"
-gem "sinatra"
-gem 'sinatra-cross_origin'
+source 'https://rubygems.org'
+gem 'sinatra'
+gem 'puma'
 gem "metainspector"
-gem "puma"

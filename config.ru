@@ -1,3 +1,3 @@
-require "./server"
+require "./meta_server"
 
-Sinatra::Application.run!
+run Sinatra::Application
