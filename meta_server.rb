@@ -10,7 +10,7 @@ end
 post "/metadata" do
   request_data = JSON.parse(request.body.read, symbolize_names: true)
 
-  { success: true, data: collect_metadata(request_data[:data]) }.to_json
+  { success: true, data: collect_metadata(request_data.fetch(:data)) }.to_json
 rescue => e
   { error: "invalid url, #{e.message}" }.to_json
 end
